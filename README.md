@@ -1,342 +1,179 @@
-# Signalpost — Company Intelligence
+# Signalpost 🚀
 
-Signalpost is an AI-powered company intelligence platform that researches, analyzes, and verifies company information.
+An AI-powered company information platform that collects, analyzes, and verifies company information using external APIs and AI.
 
-It takes a company organization number, retrieves official company information, performs AI-powered web research, extracts useful facts and sources, and provides source verification.
+## 🌐 Live Demo
 
-## Features
+**[Signalpost](https://signalpost-rho.vercel.app/)**
 
-* Browse 1,000+ company profiles
-* Search companies by name or organization number
-* AI-powered company research
-* Automatic industry identification
-* AI-generated company summaries
-* Extraction of key company facts
-* Source collection and verification
-* Confidence levels for extracted facts
-* Company research status tracking
-* Verified / Researched / Pending status
-* Pagination and filtering
-* Persistent company data using MongoDB Atlas
+## 📌 About the Project
 
-## Technology Stack
+Signalpost helps users find useful information about companies in one place.
+
+The application fetches company information from external sources, processes the data, and presents it through a simple web interface.
+
+It also provides source verification to help users understand whether the available company information could be verified.
+
+## ✨ Features
+
+* 🔍 Search and retrieve company information
+* 🏢 Company details and organization information
+* 🤖 AI-powered company analysis
+* 🔗 External API integration
+* ✅ Source verification
+* 💾 MongoDB database integration
+* ⚡ REST API using Express.js
+* 🎨 React-based frontend
+* 🌐 Deployed frontend
+
+## 🛠️ Tech Stack
 
 ### Frontend
 
-* React
+* React.js
 * Vite
 * Axios
-* Lucide React
+* CSS / Tailwind CSS
 
 ### Backend
 
 * Node.js
 * Express.js
 * Axios
+* REST APIs
 
 ### Database
 
+* MongoDB
 * MongoDB Atlas
-* Mongoose
 
 ### AI
 
-* Groq
-* Model: `openai/gpt-oss-20b`
+* LLM API integration
 
-### Company Data
+### Deployment
 
-* Brønnøysund Register Centre (Brreg)
+* Vercel — Frontend
+* Render — Backend
 
-### Web Research
-
-* TinyFish
-
-## System Architecture
+## 🏗️ Project Architecture
 
 ```text
-User
-  |
-  v
 React Frontend
-  |
-  v
-Express Backend
-  |
-  +--------------------+
-  |                    |
-  v                    v
-Brreg API          TinyFish
-  |                    |
-  |                    v
-  |                 Web Sources
-  |                    |
-  +---------+----------+
-            |
-            v
-          Groq AI
-            |
-            v
-    Structured Company
-       Intelligence
-            |
-            v
-       MongoDB Atlas
-            |
-            v
-       React Dashboard
+      ↓
+Express.js Backend
+      ↓
+External Company APIs
+      ↓
+AI / LLM Processing
+      ↓
+Source Verification
+      ↓
+MongoDB
+      ↓
+Response to Frontend
 ```
 
-## Research Flow
+## 🚀 Getting Started
 
-1. User selects a company.
-2. Signalpost sends the company's organization number to the backend.
-3. The backend retrieves company information from Brreg.
-4. Web research is performed using TinyFish.
-5. Relevant information and sources are collected.
-6. Groq analyzes the collected information.
-7. The AI generates a structured company summary and key facts.
-8. Sources are stored along with the extracted information.
-9. The company record is saved in MongoDB Atlas.
-10. The frontend displays the research report.
+### 1. Clone the repository
 
-## Source Verification
-
-Signalpost provides a source verification workflow for researched company information.
-
-The system uses the collected company facts and their associated sources to determine whether the information can be verified.
-
-Each fact can contain:
-
-* Fact value
-* Source
-* Confidence level
-
-Verification status is displayed in the dashboard as:
-
-* Pending
-* Researched
-* Verified
-
-## Dataset
-
-The current Signalpost database contains:
-
-**1,051 company profiles**
-
-The platform is designed to support large-scale company research and can process additional company profiles.
-
-## Project Structure
-
-```text
-signalpost/
-│
-├── client/
-│   ├── src/
-│   ├── package.json
-│   └── ...
-│
-├── server/
-│   ├── models/
-│   ├── routes/
-│   ├── controllers/
-│   ├── .env
-│   ├── package.json
-│   └── server.js
-│
-├── .gitignore
-└── README.md
+```bash
+git clone https://github.com/virajkulkarni099-lgtm/signalpost.git
+cd signalpost
 ```
 
-## Environment Variables
+### 2. Install dependencies
 
-Create a `.env` file inside the `server` directory.
+For the backend:
+
+```bash
+npm install
+```
+
+For the frontend:
+
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file and add the required API keys and database credentials.
 
 Example:
 
 ```env
-MONGODB_URI=your_mongodb_connection_string
-GROQ_API_KEY=your_groq_api_key
-TINYFISH_API_KEY=your_tinyfish_api_key
+MONGO_URI=your_mongodb_connection_string
+API_KEY=your_api_key
+LLM_API_KEY=your_llm_api_key
 ```
 
-Never commit the `.env` file or API keys to GitHub.
+Do not commit your `.env` file to GitHub.
 
-## Running Locally
+## ▶️ Run Locally
 
-### Backend
-
-Navigate to the server directory:
+Start the backend:
 
 ```bash
-cd server
+npm start
 ```
 
-Install dependencies:
-
-```bash
-npm install
-```
-
-Start the server:
-
-```bash
-node server.js
-```
-
-The backend runs locally on:
-
-```text
-http://localhost:5000
-```
-
-### Frontend
-
-Open another terminal and navigate to the client directory:
-
-```bash
-cd client
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Start the development server:
+Start the frontend:
 
 ```bash
 npm run dev
 ```
 
-The frontend will be available at the Vite development URL shown in the terminal.
+The frontend will then be available through the Vite development server.
 
-## API Endpoints
+## 🌍 Deployment
 
-### Get Companies
+The frontend is deployed on Vercel:
 
-```text
-GET /api/companies
-```
+**https://signalpost-rho.vercel.app/**
 
-Returns the stored company profiles.
+The backend is deployed separately using Render.
 
-### Research Company
+## 📂 Project Structure
 
 ```text
-POST /api/research/:orgNumber?refresh=true
+signalpost/
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── backend/
+│   ├── routes/
+│   ├── controllers/
+│   ├── models/
+│   ├── server.js
+│   └── package.json
+│
+├── .gitignore
+└── README.md
 ```
 
-Researches a company using its organization number.
+## 🔮 Future Improvements
 
-### Verify Company
-
-```text
-POST /api/verification/:companyId/verify
-```
-
-Runs source verification for a researched company.
-
-## Deployment
-
-### Frontend
-
-The React frontend is deployed using Vercel.
-
-```text
-Live Demo:
-YOUR_VERCEL_URL
-```
-
-### Backend
-
-The Express backend is deployed using Render.
-
-```text
-Backend:
-YOUR_RENDER_URL
-```
-
-### Database
-
-MongoDB Atlas is used for persistent company data storage.
-
-## AI Model and APIs
-
-### AI Model
-
-```text
-Provider: Groq
-Model: openai/gpt-oss-20b
-```
-
-The model is used to analyze researched information and generate structured company intelligence.
-
-### Brreg
-
-Brreg provides official Norwegian company registration information.
-
-### TinyFish
-
-TinyFish is used for web-based company research and source discovery.
-
-## Expected API Cost
-
-The total cost depends on the number of companies researched and the amount of web research and AI processing performed for each company.
-
-For the final submission, the expected cost should be calculated based on the actual API usage of one company research run.
-
-## Security
-
-API keys and database credentials are stored in environment variables.
-
-The following files are excluded from Git:
-
-```text
-.env
-node_modules/
-dist/
-```
-
-## Submission Information
-
-Project Name:
-
-**Signalpost — Company Intelligence**
-
-Company Profiles:
-
-**1,051**
-
-AI Model:
-
-**Groq — openai/gpt-oss-20b**
-
-Repository:
-
-**YOUR_GITHUB_REPOSITORY_URL**
-
-Live Demo:
-
-**YOUR_VERCEL_URL**
-
-Commit Hash:
-
-**YOUR_FINAL_COMMIT_HASH**
-
-## Future Improvements
-
-* Automated scheduled company research
-* More external data sources
-* Advanced source verification
-* Research history
+* Advanced AI-powered company research
+* More company data sources
+* Better source verification
 * Company comparison
-* Export reports as PDF
-* Background job processing
-* Research progress tracking
-* More detailed company risk and market signals
+* Search history
+* PDF report generation
+* More detailed AI-generated insights
+* Improved data accuracy and validation
 
-## License
+## 👨‍💻 Author
 
-This project was created for the Signalpost hackathon.
+**Viraj Kulkarni**
+
+IT Engineering Student
+MERN Stack Developer
+
+## 📄 License
+
+This project is created for educational and project-development purposes.
